@@ -40,12 +40,8 @@ if(count($routes_array) == 0) {
 	==============================================*/	
 	if ($_SERVER['REQUEST_METHOD'] == "GET") {
 
-		$json = array(
-			"status" => 200,
-			"result" => "Solicitud GET"
-		);
-		
-		echo json_encode($json, http_response_code($json["status"]));
+		// incluimos la soliictu get
+		include "services/get.php";
 	}
 
 	/**============================================
