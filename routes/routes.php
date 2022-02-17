@@ -40,7 +40,7 @@ if(count($routes_array) == 0) {
 	==============================================*/	
 	if ($_SERVER['REQUEST_METHOD'] == "GET") {
 
-		// incluimos la soliictu get
+		// incluimos la soliictu GET
 		include "services/get.php";
 	}
 

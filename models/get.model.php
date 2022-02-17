@@ -4,16 +4,36 @@ require_once "connection.php";
 
 class GetModel {
 
-   static public function getData($table) {
+   /**============================================
+   * ? Petición GET sin FILTRO
+   ==============================================*/
+
+   static public function getData($table,$select) {
 
       // hacemos la consulta SQL
-      $sql = "SELECT * FROM $table";
+      $sql = "SELECT $select FROM $table";
 
       // preparamos la query
       $stmt = Connection::connect()->prepare($sql);
       $stmt -> execute();
       return $stmt -> fetchAll(PDO::FETCH_CLASS);
+   }
 
+
+   /**============================================
+   * ? Petición GET con FILTRO
+   ==============================================*/
+
+   static public function getDataFilter($table, $select, $linkTo, $equalTo) {
+
+      // hacemos la consulta SQL con filtro
+      $sql = "SELECT $select FROM $table WHERE $linkTo = :$linkTo";
+
+      // preparamos la query
+      $stmt = Connection::connect()->prepare($sql);
+      $stmt -> bindParam(":".$linkTo, $equalTo, PDO::PARAM_STR);
+      $stmt -> execute();
+      return $stmt -> fetchAll(PDO::FETCH_CLASS);
    }
 
 }
