@@ -8,7 +8,7 @@ class Connection {
 	static public function infoDatabase() {
 
 		$infoDB = array(
-			"database" => "dbejemplo1",
+			"database" => "dbejemplo3",
 			"user" => "root",
 			"pass" => ""
 		);
